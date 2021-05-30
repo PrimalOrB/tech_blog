@@ -4,7 +4,8 @@
   "description": "cms blog site",
   "main": "server.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",

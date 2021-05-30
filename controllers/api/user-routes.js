@@ -77,7 +77,7 @@ router.post('/', ( req, res ) => {
 
     // login
 router.post( '/login', ( req, res ) => {
-    //user input expects {email: 'blah@blah.com, password: 'blah123 '}
+    //user input expects {username: 'bbb', password: 'blah123 '}
     User.findOne( {
         where: {
             username: req.body.username
@@ -85,7 +85,7 @@ router.post( '/login', ( req, res ) => {
     } )
     .then( dbUserData => {
         if( !dbUserData ) {
-            res.status( 400 ).json( { message: 'No user with that email address!' } );
+            res.status( 400 ).json( { message: 'No user with that username address!' } );
             return;
         }
         

@@ -67,12 +67,40 @@ router.post('/', ( req, res ) => {
         password: req.body.password
     } )
     .then( dbUserData => {
-        res.json( dbUserData )
+        
+        req.session.save( () => {
+            req.session.user_id = dbUserData.id;
+            req.session.username = dbUserData.username;
+            req.session.loggedIn = true;
+            res.json( { user: dbUserData.username, message: 'You are now logged in!' } );
+        } );
+        
     } )
     .catch( err => {
         console.log( err )
         res.status( 500 ).json( err );
     } );
+} );
+
+    // check for existing user
+router.post( '/checkuser', (req, res ) => {
+    User.findOne( {
+        where: {
+            username: req.body.username
+        }
+    } )
+    .then( dbUserData => {
+        if( !dbUserData ) {
+            res.status( 200 ).json( { body: req.body.username, exists: false } )
+            return
+        } else {
+            res.status( 200 ).json( { body: req.body.username, exists: true } )
+        }
+    } )
+    .catch( err => {
+        console.log( err )
+        res.status( 500 ).json( err )
+    } )
 } );
 
     // login
@@ -85,10 +113,10 @@ router.post( '/login', ( req, res ) => {
     } )
     .then( dbUserData => {
         if( !dbUserData ) {
-            res.status( 400 ).json( { message: 'No user with that username address!' } );
+            res.status( 400 ).json( { message: 'No user with that username!' } );
             return;
         }
-        
+
         // verify user
         const validPassword = dbUserData.checkPassword( req.body.password );
         if( !validPassword ) {

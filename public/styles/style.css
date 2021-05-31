@@ -1,8 +1,18 @@
+/* Root - adding color variables */
+:root {
+  --primary-color: rgba(168, 201, 230, 1);
+  --secondary-color: rgba(84, 64, 64, 1);
+  --text-color: hsl(208, 38%, 35%, 1);
+  --text-color-alt: hsl(208, 38%, 25%, 1);
+  --shadow: rgba(0, 0, 0, 0.2);
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
   font-family: Arial, Helvetica, sans-serif;
+  border: 1px solid black;
 }
 
 header {
@@ -23,4 +33,142 @@ header {
   font-weight: bold;
   transition: color 0.1s;
   margin-left: 16px;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sub-wrapper {
+  width: 100vw;
+  max-width: 1200px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+header,
+footer {
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+}
+
+main {
+  width: 100vw;
+  max-width: 1080px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+a {
+  text-decoration: none;
+  color: var(--primary-color);
+}
+
+a:visited {
+  color: var(--primary-color);
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+button {
+  padding: 0.5em 1em;
+  text-transform: uppercase;
+}
+
+#welcome-tag {
+  width: 100%;
+  text-align: center;
+  display: block;
+  padding: 0.5em;
+}
+
+#welcome {
+  font-weight: bold;
+}
+
+.login-form div,
+.signup-form div {
+  margin: 0.25rem 0.5rem;
+}
+
+input,
+label {
+  padding: 0.25rem 0.5rem;
+}
+
+#create-post {
+  width: 100%;
+}
+
+.new-post-form {
+  width: 90%;
+}
+
+.new-post-form div {
+  width: 100%;
+  display: flex;
+}
+
+.new-post-form label {
+  flex: 0;
+  flex-basis: 10rem;
+  text-align: right;
+}
+
+.new-post-form input,
+.new-post-form textarea {
+  flex: 1;
+  resize: vertical;
+}
+
+.comment-form {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: nowrap;
+}
+
+#comment-body {
+  width: 100%;
+  resize: vertical;
+}
+
+.post-list,
+#comment-div {
+  width: 90%;
+  list-style: none;
+}
+
+#post-list-item {
+  width: 100%;
+}
+
+.post {
+  width: 100%;
+  display: flex;
+  justify-content: right;
+  flex-wrap: wrap;
+}
+
+.post-title {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.post-content {
+  width: 100%;
+}
+
+.comments {
+  width: 100%;
 }

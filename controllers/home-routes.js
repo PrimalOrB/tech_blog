@@ -72,9 +72,7 @@ router.get( '/post/:id', (req, res ) => {
             res.status( 404 ).json( { message: 'No post found with this id' } )
             return
         }
-
         const post = dbPostData.get( { plain: true } )
-
         res.render( 'single-post',  { 
             post,
             loggedIn: req.session.loggedIn
@@ -86,13 +84,44 @@ router.get( '/post/:id', (req, res ) => {
     } )
 } );
 
-    // login route
-router.get( '/login', ( req, res ) => {
+    // login route from username check
+router.get( '/login/:username', ( req, res ) => {
     if( req.session.loggedIn ) {
         res.redirect( '/' );
         return
     }
+    const username = req.params.username
+    res.render( 'login', {
+        username
+    } );
+} );
+
+    // login route blank
+router.get( '/login/', ( req, res ) => {
+    if( req.session.loggedIn ) {
+        res.redirect( '/' );
+        return
+    }
+    const username = req.params.username
     res.render( 'login' );
 } );
+
+    // signup for existing user route
+router.get( '/signup/:username', (req, res ) => {
+    if( req.session.loggedIn ) {
+        res.redirect( '/' );
+        return
+    }
+    const username = req.params.username
+    res.render( 'signup', {
+        username
+    } );
+} );
+    // check for existing user route
+ router.get( '/checkuser', (req, res ) => {
+    res.render( 'checkuser' )
+} );
+
+
 
 module.exports = router

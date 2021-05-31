@@ -2,12 +2,12 @@
     <h2>Create New Post</h2>
 
     <form class="new-post-form">
-        <div>
+        <div id="post-div">
             <label for="post-title">Title</label>
             <input type="text" id="post-title" name="post-title" />
         </div>
-        <div>
-            <label for="post-content">Content</label>
+        <div id="post-div">
+            <label for="post-content">Post Text</label>
             <textarea id="post-content" name="post-content" /></textarea>
         </div>
         <button type="submit" class="btn">Create</button>
@@ -16,7 +16,7 @@
 
 {{#if posts.length}}
 <section id="post-list-item">
-    <h2>Your Posts</h2>
+    <h2 class="divide-header">Your Posts</h2>
     <ol>
         {{#each posts as |post|}}
         <li>

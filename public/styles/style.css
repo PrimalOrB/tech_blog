@@ -1,9 +1,10 @@
 /* Root - adding color variables */
 :root {
   --primary-color: rgba(168, 201, 230, 1);
-  --secondary-color: rgba(84, 64, 64, 1);
+  --secondary-color: hsl(209, 38%, 50%);
   --text-color: hsl(208, 38%, 35%, 1);
   --text-color-alt: hsl(208, 38%, 25%, 1);
+  --white: hsl(208, 100%, 100%, 1);
   --shadow: rgba(0, 0, 0, 0.2);
 }
 
@@ -12,27 +13,62 @@
   margin: 0;
   padding: 0;
   font-family: Arial, Helvetica, sans-serif;
-  border: 1px solid black;
+  /* border: 1px solid black; */
+  color: var(--text-color);
 }
 
-header {
-  display: flex;
-  flex-wrap: nowrap;
-  justify-content: space-around;
-  align-items: center;
-}
-
-.btn-no-style {
-  background: none;
-  border: none;
-  padding: 0;
-  cursor: pointer;
+a {
   text-decoration: none;
-  color: #225ca3;
-  font-size: 100%;
-  font-weight: bold;
-  transition: color 0.1s;
-  margin-left: 16px;
+  color: var(--text-color);
+}
+
+a:visited {
+  color: var(--text-color);
+}
+
+input {
+  outline: none
+}
+
+ol {
+  width: 100%
+}
+
+li {
+  list-style: none;
+}
+
+header,
+footer {
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color:  var(--primary-color);
+  background-image: linear-gradient(to right, var(--secondary-color) 50%, var(--primary-color) 51%);
+}
+
+header .sub-wrapper,
+footer .sub-wrapper {
+  padding: 1rem;
+  background-color: var(--primary-color);
+  background: linear-gradient(to right, var(--secondary-color) , var(--primary-color));
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+}
+
+header a,
+header a:visited,
+header i {
+  color: var(--white);
+}
+
+h1 {
+  font-size: 3.5rem;
+  text-shadow: 1px 2px 3px var(--shadow);
 }
 
 .wrapper {
@@ -45,15 +81,31 @@ header {
   width: 100vw;
   max-width: 1200px;
   display: flex;
-  justify-content: space-around;
   align-items: center;
 }
 
-header,
-footer {
-  width: 100vw;
-  display: flex;
-  justify-content: center;
+header .sub-wrapper {
+  justify-content: space-between;
+}
+
+footer .sub-wrapper {
+    justify-content: flex-end;
+}
+
+nav a {
+  margin: 0 1rem;
+  padding: 0.35rem 1rem;
+  border-radius: 0.75rem;
+  font-size: 1.25rem;
+  border: 1px solid var(--primary-color);
+  background-color: var(--secondary-color);
+  box-shadow: 1px 2px 3px 1px var(--shadow);
+  transition: 0.25s ease all;
+}
+
+nav a:hover  {
+  background-color: var(--white);
+  color: var(--secondary-color)
 }
 
 main {
@@ -62,15 +114,7 @@ main {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-}
-
-a {
-  text-decoration: none;
-  color: var(--primary-color);
-}
-
-a:visited {
-  color: var(--primary-color);
+  margin: 1.5rem;
 }
 
 form {
@@ -79,9 +123,26 @@ form {
   align-items: center;
 }
 
+form div {
+  margin: 0.5rem
+}
+
 button {
-  padding: 0.5em 1em;
+  padding: 0.5rem 1.5rem;
   text-transform: uppercase;
+  background-color: var(--primary-color);
+  outline: none;
+  border: 1px solid var(--secondary-color);
+  border-radius: 0.5rem;
+  font-size: 1.25rem;
+  font-weight: bold;
+  box-shadow: 1px 2px 3px 1px var(--shadow);
+  transition: 0.25s ease all;
+}
+
+button:hover {
+  color: var(--white);
+  background-color: var(--secondary-color)
 }
 
 #welcome-tag {
@@ -89,6 +150,7 @@ button {
   text-align: center;
   display: block;
   padding: 0.5em;
+  font-size: 1.5rem;
 }
 
 #welcome {
@@ -105,12 +167,57 @@ label {
   padding: 0.25rem 0.5rem;
 }
 
+.divide-header {
+  margin-bottom: 1rem;
+  text-align: center;
+  width: 85%;
+  color: var(--primary-color)
+}
+
+.divide-header::after {
+  content: '';
+  display: block;
+  width: 100%;
+  border-top: 2px solid var(--primary-color)
+}
+
 #create-post {
   width: 100%;
 }
 
-.new-post-form {
+.new-post-form,
+.check-user-form,
+.login-form,
+.signup-form {
   width: 90%;
+}
+
+.form-div {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#check-username-div {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.check-user-form input,
+.login-form input,
+.signup-form input {
+  width: 50%;
+  padding: 0.75rem;
+  border-radius: 1rem;
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+#post-div {
+  display: flex;
+  flex-direction: column;
 }
 
 .new-post-form div {
@@ -118,23 +225,21 @@ label {
   display: flex;
 }
 
-.new-post-form label {
-  flex: 0;
-  flex-basis: 10rem;
-  text-align: right;
-}
-
 .new-post-form input,
 .new-post-form textarea {
-  flex: 1;
   resize: vertical;
 }
 
-.comment-form {
+.comment-form,
+#create-post {
   width: 100%;
   display: flex;
   justify-content: center;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
+  border: 2px solid var(--primary-color);
+  border-radius: 1rem;
+  padding: 1rem;
+  margin: 0.5rem 0;
 }
 
 #comment-body {
@@ -150,25 +255,65 @@ label {
 
 #post-list-item {
   width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
 }
+
+
 
 .post {
   width: 100%;
   display: flex;
   justify-content: right;
   flex-wrap: wrap;
+  background-color: var(--primary-color);
+  border: 3px solid var(--primary-color);
+  border-radius: 0.7rem;
+  box-shadow: 1px 2px 3px 1px var(--shadow);
+  margin-bottom: 0.5rem;
 }
 
 .post-title {
   display: flex;
   justify-content: space-between;
+  align-items: baseline;
   width: 100%;
+  padding: 0.5rem;
+  font-size: 1.25rem;
+  font-weight: bold;
 }
 
 .post-content {
   width: 100%;
+  padding: 0.5rem;
+  background-color: var(--white);
+  border-radius: 0 0 0.5rem 0.5rem;
+}
+
+.post .meta {
+  font-style: italic;
+  font-size: 0.8rem;
+  font-weight: lighter;
+  padding-right: 0.5rem;
 }
 
 .comments {
-  width: 100%;
+  width: 90%;
+}
+
+.comments section {
+  padding: 0.5rem
+}
+
+.comments section:not(:first-of-type){
+  border-top: 2px dashed var(--primary-color);
+}
+
+.comments .text {
+  padding: 0 1rem;
+}
+
+.comment-date {
+  font-size: 0.9rem;
 }

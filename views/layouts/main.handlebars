@@ -1,44 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Tech Blog</title>
-        <link rel="stylesheet" href="/styles/style.css">
-    </head>
 
-    <body>
-        <div class="wrapper">
-            <header>
-                <div class="sub-wrapper">
-                    <h1>
-                        <a href="/"><i class="fas fa-rss"></i> Tech Blog</a>
-                    </h1>
-                    <nav>
-                        {{#if loggedIn}}
-                        <a href="/dashboard">Dashboard</a>
-                        <a href="#" id="logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
-                        {{else}}
-                        <a href="/checkuser"><i class="fas fa-sign-in-alt"></i> Sign up / Login</a>
-                        {{/if}}
-                    </nav>
-                </div>
-            </header>
-            <main>
-                {{{ body }}}
-            </main>
-            <footer>
-                <div class="sub-wrapper">
-                    <h2>test</h2>
-                </div>
-            </footer>
-        </div>
-        {{#if loggedIn}}
-        
-        <script src="/js/logout.js"></script>
-        {{/if}}
-        <script src="/js/main.js"></script>
-        <script src="https://kit.fontawesome.com/20930007b6.js" crossorigin="anonymous"></script>
-    </body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech Blog</title>
+    <link rel="stylesheet" href="/styles/style.css">
+</head>
+
+<body>
+    <div class="wrapper">
+        <header>
+            <div class="sub-wrapper">
+                <h1>
+                    <a href="/"><i class="fas fa-rss"></i> Tech Blog</a>
+                </h1>
+                <nav>
+                    {{#if loggedIn}}
+                    <a href="/dashboard">Dashboard</a>
+                    <a href="#" id="logout">Logout</a>
+                    {{else}}
+                    <a href="/checkuser">Sign up / Login</a>
+                    {{/if}}
+                </nav>
+            </div>
+        </header>
+        <main>
+            {{{ body }}}
+        </main>
+        <footer>
+            <div class="sub-wrapper">
+                <span id="footer-text"></span>
+            </div>
+        </footer>
+    </div>
+    {{#if loggedIn}}
+
+    <script src="/js/logout.js"></script>
+    {{/if}}
+    <script src="/js/main.js"></script>
+</body>
 
 </html>

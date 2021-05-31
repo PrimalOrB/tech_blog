@@ -1,6 +1,9 @@
 {{> post-info post}}
+{{> comments post.comments}}
+
 {{#if loggedIn}}
 <form class="comment-form">
+    <h2 class="divide-header">Add Comment</h2>
     <div id="comment-div">
         <textarea name="comment-body" id="comment-body"></textarea>
     </div>
@@ -11,7 +14,6 @@
 </form>
 {{/if}}
 
-<h2>Comments</h2>
-{{> comments post.comments}}
+
 
 <script src="/js/comment.js"></script>

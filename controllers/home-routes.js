@@ -9,7 +9,8 @@ router.get( '/',  (req, res ) => {
             'id', 
             'title',
             'content', 
-            'created_at'     
+            'created_at',
+            'updated_at'     
         ],
         include: [
             {
@@ -74,6 +75,36 @@ router.get( '/post/:id', (req, res ) => {
         }
         const post = dbPostData.get( { plain: true } )
         res.render( 'single-post',  { 
+            post,
+            loggedIn: req.session.loggedIn
+         } )
+    } )
+    .catch( err => {
+        console.log( err )
+        res.status( 500 ).json( err )
+    } )
+} );
+
+router.get( '/edit/:id', (req, res ) => {
+    Post.findOne( {
+        where: {
+            id: req.params.id
+        },
+        attributes: [ 
+            'id', 
+            'title',
+            'content', 
+            'created_at'     
+        ]
+    } )
+    .then( dbPostData => {
+        if( !dbPostData ) {
+            res.status( 404 ).json( { message: 'No post found with this id' } )
+            return
+        }
+        console.log( dbPostData )
+        const post = dbPostData.get( { plain: true } )
+        res.render( 'edit-post',  { 
             post,
             loggedIn: req.session.loggedIn
          } )

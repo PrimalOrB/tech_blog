@@ -9,7 +9,8 @@ router.get('/', ( req, res ) => {
                 'id', 
                 'title',
                 'content', 
-                'created_at'     
+                'created_at',
+                'updated_at'     
             ],
             include: [
                 {
@@ -25,7 +26,7 @@ router.get('/', ( req, res ) => {
                     attributes: ['username']
                 }
             ],
-            order: [ [ 'updated_at', 'DESC' ] ],
+            order: [ [ 'updated_at', 'DESC' ] ]
         } )
         .then( dbPostData => res.json( dbPostData ) )
         .catch( err => {
@@ -44,7 +45,8 @@ router.get('/:id', ( req, res ) => {
             'id', 
             'title',
             'content', 
-            'created_at'     
+            'created_at',
+            'updated_at'     
         ],
         include: [
             {
@@ -59,8 +61,7 @@ router.get('/:id', ( req, res ) => {
                 model: User,
                 attributes: ['username']
             }
-        ],
-        order: [ [ 'updated_at', 'DESC' ] ],
+        ]
     } )
     .then( dbPostData => {
         if( !dbPostData ) {
@@ -92,40 +93,17 @@ router.post('/', withAuth, ( req, res ) => {
     } );
 } );
 
-    // UPDATE post title
-router.put( '/title/:id', withAuth, ( req, res ) => {
-    Post.update( 
-        {
-            title: req.body.title
-        } ,
-        {
-            where: {
-                id: req.params.id
-            }
-        }
-    )
-    .then( dbPostData => {
-        if( !dbPostData ) {
-            res.status( 404 ).json( { message: 'No post found with this id' } );
-            return;
-        }
-        res.json( dbPostData );
-    } )
-    .catch( err => {
-        console.log( err );
-        res.status( 500 ).json( err );
-    } );
-} );
 
-    // UPDATE post content
-router.put( '/content/:id', withAuth, ( req, res ) => {
+    // UPDATE post title
+router.put( '/', withAuth, ( req, res ) => {
     Post.update( 
         {
+            title: req.body.title,
             content: req.body.content
         } ,
         {
             where: {
-                id: req.params.id
+                id: req.body.post_id
             }
         }
     )
@@ -141,7 +119,6 @@ router.put( '/content/:id', withAuth, ( req, res ) => {
         res.status( 500 ).json( err );
     } );
 } );
-
 
     // DELETE /api/posts/1
 router.delete('/:id', withAuth, ( req, res ) => {

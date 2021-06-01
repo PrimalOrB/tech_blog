@@ -12,7 +12,8 @@ router.get( '/', withAuth, ( req, res ) => {
             'id',
             'title',
             'content',
-            'created_at'
+            'created_at',
+            'updated_at'
         ],
         include: [
             {
@@ -22,7 +23,8 @@ router.get( '/', withAuth, ( req, res ) => {
                 model: User,
                 attributes: [ 'username' ]
             }
-        ]
+        ],
+        order: [ [ 'updated_at', 'DESC' ] ]
     } )
     .then( dbPostData => {
         const posts = dbPostData.map( post => post.get( { plain: true } ) );

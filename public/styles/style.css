@@ -205,15 +205,18 @@ textarea:focus {
   border-top: 2px solid var(--primary-color);
 }
 
-#create-post {
+#create-post,
+#edit-post {
   width: 100%;
 }
 
-#create-post label {
+#create-post label,
+#edit-post label {
   font-weight: bold;
 }
 
 .new-post-form,
+.edit-post-form,
 .check-user-form,
 .login-form,
 .signup-form {
@@ -248,13 +251,16 @@ textarea:focus {
   flex-direction: column;
 }
 
-.new-post-form div {
+.new-post-form div,
+.edit-post-form div {
   width: 100%;
   display: flex;
 }
 
 .new-post-form input,
-.new-post-form textarea {
+.new-post-form textarea,
+.edit-post-form input,
+.edit-post-form textarea {
   resize: vertical;
   padding: 0.75rem;
   border-radius: 1rem;
@@ -262,7 +268,8 @@ textarea:focus {
 }
 
 .comment-form,
-#create-post {
+#create-post,
+#edit-post {
   width: 100%;
   display: flex;
   justify-content: center;
@@ -271,6 +278,11 @@ textarea:focus {
   border-radius: 1rem;
   padding: 1rem;
   margin: 0.5rem 0;
+}
+
+#edit-post h2 {
+  width: 100%;
+  text-align: center;
 }
 
 #comment-body {

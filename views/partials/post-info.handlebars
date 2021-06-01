@@ -1,7 +1,13 @@
 <article class="post">
     <div class="post-title">
         <a href="/post/{{ id }}">{{ title }}</a>
-        <div class="meta">Posted by {{ user.username }} on {{ format_date created_at }}</div>
+        {{#if_equals created_at updated_at operator=">=" }}
+        <div class="meta">Posted by {{ user.username }} on {{
+            format_date created_at }}
+        </div>
+        {{else}}
+        <div class="meta">Updated by {{ user.username }} on {{ format_date updated_at }}</div>
+        {{/if_equals}}
     </div>
     <div class="post-content">
         {{ content }}

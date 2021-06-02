@@ -22,7 +22,7 @@ canvas {
   position: fixed;
   top: 0;
   left: 0;
-  z-index: -5
+  z-index: -5;
 }
 
 body {
@@ -244,7 +244,7 @@ textarea:focus {
 #create-post,
 #edit-post,
 .comment-form {
-  background-color: rgba(255,255,255,.6);
+  background-color: rgba(255, 255, 255, 0.6);
 }
 
 #create-post label,
@@ -266,7 +266,6 @@ textarea:focus {
   height: 1.5rem;
   margin-right: 1rem;
 }
-
 
 .form-div {
   width: 100%;
@@ -323,6 +322,7 @@ textarea:focus {
   border-radius: 1rem;
   padding: 1rem;
   margin: 0.5rem 0;
+  box-shadow: 1px 2px 3px 1px var(--shadow);
 }
 
 #edit-post h2 {
@@ -394,6 +394,13 @@ textarea:focus {
 
 .comments {
   width: 90%;
+  background-color: rgba(255, 255, 255, 0.6);
+  padding: 0.5em;
+  margin-top: -1.5rem;
+  margin-bottom: -0.5rem;
+  z-index: -1;
+  border-left: 2px solid var(--primary-color);
+  border-right: 2px solid var(--primary-color);
 }
 
 .comments section {
@@ -411,5 +418,3 @@ textarea:focus {
 .comment-date {
   font-size: 0.9rem;
 }
-
-

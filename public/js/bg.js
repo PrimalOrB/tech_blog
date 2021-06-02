@@ -1,17 +1,18 @@
 
 import * as THREE from './three.module.js';
-console.log( THREE)
+
+let canvas =  document.querySelector('#bg')
 
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 const renderer = new THREE.WebGLRenderer({
-  canvas: document.querySelector('#bg'),
+  canvas,
   alpha: true
 });
 
 renderer.setPixelRatio(window.devicePixelRatio);
 renderer.setSize(window.innerWidth, window.innerHeight);
-renderer.render(scene, camera);// Lights
+renderer.render(scene, camera);
 
 function addStar() {
   const geometry = new THREE.SphereGeometry(0.25, 24, 24);
@@ -38,6 +39,12 @@ const lineGeometry = new THREE.BufferGeometry().setFromPoints( points );
 const line = new THREE.Line( lineGeometry, lineMaterial );
 scene.add( line )
 
+let widthPos = 0.5
+let heightPos = 0.5
+
+let xDiff = 0
+let yDiff = 0
+
 function handleMouseMove(event) {
   var eventDoc, doc, body;
   const w = document.body.getBoundingClientRect()
@@ -56,24 +63,39 @@ function handleMouseMove(event) {
         (doc && doc.clientTop  || body && body.clientTop  || 0 );
   }
 
-  const widthPos = ( event.clientX / window.innerWidth ) - 0.5
-  const heightPos = ( event.clientY / window.innerHeight ) - 0.5
+  const newWidthPos = ( event.clientX / window.innerWidth ) - 0.5
+  const newHeightPos = ( event.clientY / window.innerHeight ) - 0.5
 
-  camera.rotation.y = widthPos * .5;
-  camera.rotation.x = heightPos * .5;
+  xDiff = newWidthPos - widthPos
+  yDiff = newHeightPos - heightPos
+
+  widthPos = newWidthPos
+  heightPos = newHeightPos
+
 }
 
 document.onmousemove = handleMouseMove
 
-let updateVal = 0
-
 function animate() {
   requestAnimationFrame(animate);
 
-  camera.rotation.y += .0005;
-  camera.rotation.x += .0005;
+  camera.rotation.y -= widthPos / 100;
+  camera.rotation.x -= heightPos / 100;
 
   renderer.render(scene, camera);
 }
 
 animate();
+
+    //resize
+function resize(){
+  const windowWidth = window.innerWidth;
+  const windowHeight = window.innerHeight;
+  const windowAspect = windowWidth / windowHeight
+  camera.aspect = windowAspect;
+  camera.updateProjectionMatrix();
+  renderer.setPixelRatio(window.devicePixelRatio);
+  renderer.setSize(window.innerWidth, window.innerHeight);
+};
+
+window.addEventListener( 'resize', resize, false);

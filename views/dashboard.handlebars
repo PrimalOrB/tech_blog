@@ -13,6 +13,10 @@
         <button type="submit" class="btn">Create</button>
     </form>
 </section>
+{{#if edit}}
+<p>edit</p>
+{{/if}}
+
 
 {{#if posts.length}}
 <section id="post-list-item">
@@ -20,8 +24,8 @@
     <ol>
         {{#each posts as |post|}}
         <li>
-            {{> post-info post}}
-            <a href="/edit/{{post.id}}" class="edit-link">Edit post</a>
+            {{> post-info-edit post}}
+            {{!-- <a href="/edit/{{post.id}}" class="edit-link">Edit post</a> --}}
         </li>
         {{/each}}
     </ol>

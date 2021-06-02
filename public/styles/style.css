@@ -228,6 +228,14 @@ textarea:focus {
   width: 90%;
 }
 
+.edit-link {
+  display: flex;
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-right: 1rem;
+}
+
+
 .form-div {
   width: 100%;
   display: flex;
@@ -331,6 +339,10 @@ textarea:focus {
   padding: 0.5rem;
   font-size: 1.25rem;
   font-weight: bold;
+}
+
+.title-div {
+  display: flex;
 }
 
 .post-content {

@@ -25,7 +25,7 @@ module.exports = {
         }
         if (!operators[operator])
             throw new Error("Handlerbars Helper 'compare' doesn't know the operator "+operator);
-        var result = operators[operator](Math.floor(lvalue.getTime()),Math.floor(rvalue.getTime()));
+        var result = operators[operator](Math.floor(lvalue),Math.floor(rvalue));
         if( result ) {
             return options.fn(this);
         } else {

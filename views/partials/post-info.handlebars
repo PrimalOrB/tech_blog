@@ -1,6 +1,8 @@
 <article class="post">
     <div class="post-title">
-        <a href="/post/{{ id }}">{{ title }}</a>
+        <div class="title-div">
+            <a href="/post/{{ id }}">{{ title }}</a>
+        </div>
         {{#if_equals created_at updated_at operator=">=" }}
         <div class="meta">Posted by {{ user.username }} on {{
             format_date created_at }}
@@ -11,5 +13,8 @@
     </div>
     <div class="post-content">
         {{ content }}
+        {{#if edit}}
+        <p>edit</p>
+        {{/if}}
     </div>
 </article>

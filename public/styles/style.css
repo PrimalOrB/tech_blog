@@ -375,7 +375,7 @@ textarea:focus {
 
 .title-div {
   display: flex;
-  align-items: center;
+  align-items: baseline;
 }
 
 .post-content {
@@ -385,11 +385,12 @@ textarea:focus {
   border-radius: 0 0 0.5rem 0.5rem;
 }
 
+.comment-count,
 .post .meta {
   font-style: italic;
   font-size: 0.8rem;
   font-weight: lighter;
-  padding-right: 0.5rem;
+  padding: 0 0.5rem;
 }
 
 .comments {

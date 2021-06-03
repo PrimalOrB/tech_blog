@@ -5,6 +5,7 @@ const withAuth = require( '../../utils/auth' );
     // GET all users - /api/users
 router.get('/', ( req, res ) => {
     User.findAll( {
+        attributes: { exclude: [ 'password' ] },
         include: [ {
             model: Post,
             attributes: ['id', 'title', 'content', 'created_at', 'updated_at'],
@@ -29,6 +30,7 @@ router.get('/', ( req, res ) => {
     // GET one user /api/users/1
 router.get('/:id', ( req, res ) => {
     User.findOne( {
+        attributes: { exclude: [ 'password' ] },
         include: [ {
             model: Post,
             attributes: ['id', 'title', 'content', 'created_at', 'updated_at'],

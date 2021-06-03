@@ -10,7 +10,9 @@ router.get( '/',  (req, res ) => {
             'title',
             'content', 
             'created_at',
-            'updated_at'     
+            'updated_at',
+            [ sequelize.literal( '(SELECT COUNT(*) FROM comment WHERE post.id = comment.post_id)' ), 'num_comments' ],
+            [ sequelize.literal( '(SELECT MAX(created_at) FROM comment WHERE post.id = comment.post_id)' ), 'recent_post' ]       
         ],
         include: [
             {
@@ -52,7 +54,9 @@ router.get( '/post/:id', (req, res ) => {
             'title',
             'content', 
             'created_at',
-            'updated_at'     
+            'updated_at',
+            [ sequelize.literal( '(SELECT COUNT(*) FROM comment WHERE post.id = comment.post_id)' ), 'num_comments' ],
+            [ sequelize.literal( '(SELECT MAX(created_at) FROM comment WHERE post.id = comment.post_id)' ), 'recent_post' ]       
         ],
         include: [
             {

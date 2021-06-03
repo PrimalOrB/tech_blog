@@ -1,5 +1,6 @@
 const router = require( 'express' ).Router();
 const { Post, User, Comment } = require( '../../models' );
+const sequelize = require( '../../config/connection' );
 const withAuth = require( '../../utils/auth' );
 
 // GET all posts - /api/posts
@@ -10,7 +11,9 @@ router.get('/', ( req, res ) => {
                 'title',
                 'content', 
                 'created_at',
-                'updated_at'     
+                'updated_at',
+                [ sequelize.literal( '(SELECT COUNT(*) FROM comment WHERE post.id = comment.post_id)' ), 'num_comments' ],
+                [ sequelize.literal( '(SELECT MAX(created_at) FROM comment WHERE post.id = comment.post_id)' ), 'recent_post' ]   
             ],
             include: [
                 {
@@ -46,7 +49,9 @@ router.get('/:id', ( req, res ) => {
             'title',
             'content', 
             'created_at',
-            'updated_at'
+            'updated_at',
+            [ sequelize.literal( '(SELECT COUNT(*) FROM comment WHERE post.id = comment.post_id)' ), 'num_comments' ],
+            [ sequelize.literal( '(SELECT MAX(created_at) FROM comment WHERE post.id = comment.post_id)' ), 'recent_post' ]
         ],
         include: [
             {

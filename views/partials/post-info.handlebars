@@ -2,6 +2,9 @@
     <div class="post-title">
         <div class="title-div">
             <a href="/post/{{ id }}">{{ title }}</a>
+             {{#if_equals num_comments  0 operator=">"}}
+            <span class="comment-count">( {{num_comments}} {{format_plural 'Comment' num_comments}} )</span>
+            {{/if_equals}}
         </div>
         {{#if_equals created_at updated_at operator=">=" }}
         <div class="meta">Posted by {{ user.username }} on {{

@@ -7,6 +7,7 @@
   --text-color-alt: hsl(208, 38%, 25%, 1);
   --white: hsl(208, 100%, 100%, 1);
   --shadow: rgba(0, 0, 0, 0.2);
+  --delete: rgb(167, 74, 74);
 }
 
 * {
@@ -262,8 +263,8 @@ textarea:focus {
 
 .edit-link {
   display: flex;
-  width: 1.5rem;
-  height: 1.5rem;
+  width: 1.1rem;
+  height: 1.1rem;
   margin-right: 1rem;
 }
 
@@ -328,6 +329,16 @@ textarea:focus {
 #edit-post h2 {
   width: 100%;
   text-align: center;
+}
+
+.button-foot {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.delete-btn:hover {
+  background-color: var(--delete);
 }
 
 #comment-body {

@@ -11,7 +11,9 @@ require( 'dotenv' ).config();
 
 const sess = {
     secret: process.env.SECRET,
-    cookie: {},
+    cookie: { 
+        maxAge: (1000 * 60) * 2 },  // 2 min idle time
+    rolling: true, // rolling cookie for idle detection
     resave: false,
     saveUninitialized: true,
     store: new SequelizeStore( {

@@ -2,7 +2,7 @@
     {{#each this}}
     <section class="comment">
         <div class="meta">
-            <strong>{{ user.username }}</strong> - <i class="comment-date">{{ format_date created_at }}</i>
+            <i class="comment-date">comment by </i><strong> {{ user.username }}</strong> - <i class="comment-date">{{ format_date created_at }}</i>
         </div>
         <div class="text">
             {{ comment_text }}

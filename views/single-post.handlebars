@@ -1,5 +1,7 @@
 {{> post-info post}}
+{{#if_equals post.comments.length  0 operator=">"}}
 {{> comments post.comments}}
+{{/if_equals}}
 
 {{#if loggedIn}}
 <form class="comment-form">

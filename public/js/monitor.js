@@ -8,7 +8,6 @@ var interval = setInterval( "checkTimeout()", 1000 );
     // compare current time to activity time
 function checkTimeout() {
     var currentTime = new Date().getTime();
-    console.log( timeoutLength, currentTime-startTime)
     if ( currentTime > startTime + timeoutLength ) {
         clearInterval( interval );
         logout();

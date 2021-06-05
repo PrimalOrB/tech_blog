@@ -39,11 +39,16 @@ body {
 
 a {
   text-decoration: none;
+  transition: 0.25s ease all;
   color: var(--text-color);
 }
 
 a:visited {
   color: var(--text-color);
+}
+
+a:hover {
+  color: var(--white);
 }
 
 input,
@@ -101,6 +106,10 @@ header a,
 header a:visited,
 header i {
   color: var(--white);
+}
+
+header a:hover {
+  color: var(--text-color);
 }
 
 h1 {

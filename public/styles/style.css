@@ -39,11 +39,16 @@ body {
 
 a {
   text-decoration: none;
+  transition: 0.25s ease all;
   color: var(--text-color);
 }
 
 a:visited {
   color: var(--text-color);
+}
+
+a:hover {
+  color: var(--white);
 }
 
 input,
@@ -101,6 +106,10 @@ header a,
 header a:visited,
 header i {
   color: var(--white);
+}
+
+header a:hover {
+  color: var(--text-color);
 }
 
 h1 {
@@ -409,10 +418,11 @@ textarea:focus {
   background-color: rgba(255, 255, 255, 0.6);
   padding: 0.5em;
   margin-top: -1.5rem;
-  margin-bottom: -0.5rem;
+  margin-bottom: calc(-0.5rem - 2px);
   z-index: -1;
   border-left: 2px solid var(--primary-color);
   border-right: 2px solid var(--primary-color);
+  border-bottom: 2px solid var(--primary-color);
 }
 
 .comments section {

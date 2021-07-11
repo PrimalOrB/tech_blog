@@ -4,7 +4,7 @@
 
 ## Description
 
-Express.js / Node.js / mySQL application allowing a user to control an employee database of Departments, Roles, Managers, and Salaries.
+Blog site allowing user account creation, login, posting, and reacting to other posts
 
 ## Table Of Contents
 
